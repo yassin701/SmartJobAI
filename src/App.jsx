@@ -1,13 +1,18 @@
 import { useState } from 'react'
+import AdminAdd from './Pages/Admin/AdminAdd'
+import { BrowserRouter, Routes , Route } from 'react-router-dom'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-     
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="Add" element={<AdminAdd/>}/>
+      </Routes>
+      
+    </BrowserRouter>
   )
 }
 
