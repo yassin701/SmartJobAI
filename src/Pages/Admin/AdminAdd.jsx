@@ -13,6 +13,7 @@ export default function AdminAdd() {
         location: "",
         contract: "",
         domain: "",
+        skills: "", 
         description: "",
     });
 
@@ -27,9 +28,12 @@ export default function AdminAdd() {
         if (!formData.location) newErrors.location = "Loction is required";
         if (!formData.contract) newErrors.contract = "Contract is required";
         if (!formData.domain) newErrors.domain = "domain is required";
+        if (!formData.skills) newErrors.skills = "Skills are required";
         if (!formData.description) newErrors.description = "Description is required";
         return newErrors
     }
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate();
@@ -40,11 +44,18 @@ export default function AdminAdd() {
         }
 
 
-        try {
 
-            await addJob(formData)
+        //Sending form to Mock Api and clear inputs
+        try {
+            const formattedData = {
+                ...formData,
+                skills: formData.skills.split(",").map(s => s.trim())
+            };
+
+            await addJob(formattedData);
+
             setErrors({}); // clear all errors
-            
+
             setTimeout(() => {
                 setSuccess("Job added successfully!");
                 setFormData({
@@ -53,16 +64,18 @@ export default function AdminAdd() {
                     location: "",
                     contract: "",
                     domain: "",
+                    skills: "",
                     description: "",
                 });
             }, 2000);
-
-
         } catch (err) {
-            console.errors("Error while adding job",err)
+            console.errors("Error while adding job", err)
         }
 
     };
+
+
+
 
 
 
@@ -70,7 +83,7 @@ export default function AdminAdd() {
         <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
             <div className="bg-white w-full max-w-xl rounded-xl shadow-lg p-6">
                 <h1 className="text-2xl font-bold mb-6 text-center">
-                    Admin – Ajouter une offre
+                    Admin – Add Job
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -86,7 +99,7 @@ export default function AdminAdd() {
                         type="text"
                         name="title"
                         value={formData.title}
-                        placeholder="Titre du poste"
+                        placeholder="Title"
                         onChange={handleChange}
                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
@@ -97,7 +110,7 @@ export default function AdminAdd() {
                         type="text"
                         name="company"
                         value={formData.company}
-                        placeholder="Entreprise"
+                        placeholder="Company"
                         onChange={handleChange}
                         className="w-full p-3 border rounded-lg"
                     />
@@ -108,7 +121,7 @@ export default function AdminAdd() {
                         type="text"
                         name="location"
                         value={formData.location}
-                        placeholder="Localisation"
+                        placeholder="Location"
                         onChange={handleChange}
                         className="w-full p-3 border rounded-lg"
                     />
@@ -135,11 +148,23 @@ export default function AdminAdd() {
                         type="text"
                         name="domain"
                         value={formData.domain}
-                        placeholder="Domaine"
+                        placeholder="Domain"
                         onChange={handleChange}
                         className="w-full p-3 border rounded-lg"
                     />
                     {errors.domain && <p className="text-red-500 text-sm mt-1">{errors.domain}</p>}
+
+
+                    {/*Skills*/}
+                    <input
+                        type='text'
+                        name="skills"
+                        value={formData.skills}
+                        placeholder="Skills"
+                        onChange={handleChange}
+                        className="w-full p-3 border rounded-lg"
+                    />
+                    {errors.skills && <p className="text-red-500 text-sm mt-1">{errors.skills}</p>}
 
                     {/*Description*/}
                     <textarea

@@ -4,8 +4,23 @@ const BASE_URL = "https://6962e9172d146d9f58d251ee.mockapi.io/api/v1";
 
 // Add Jobs (Admin => Post)
 
-export const addJob = async (formDATA) => {
-    const res = await axios.post(`${BASE_URL}/Jobs`, formDATA);
+export const addJob = async (job) => {
+    const res = await axios.post(`${BASE_URL}/Jobs`, job);
     return res.data
 }
 
+export const getJobs = async () => {
+    const res = await axios.get(`${BASE_URL}/Jobs`);
+    return res.data
+
+}
+
+export const getJobById = async (id) => {
+    const res = await axios.get (`${BASE_URL}/Jobs/${id}`)
+    return res.data;
+}
+
+export const updateJob = async (id , job) => {
+    const res = await axios.put(`${BASE_URL}/Jobs/${id}`, job);
+    return res.data;
+}
