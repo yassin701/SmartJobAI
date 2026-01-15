@@ -1,20 +1,52 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import AdminLayout from './Components/AdminLayout'
+import AdminLayout from './Components/AdminLayout';
 import AdminAdd from "./Pages/Admin/AdminAdd";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
-import './app.css'
+import AdminLogin from "./Pages/Admin/AdminLogin";
+import Home from './Pages/Home'
+import Apply from "./Pages/Apply"
+import Jobs from "./Pages/Jobs";
+import JobDetail from "./Pages/JobDetail";
+
+
+import { useState } from "react";
+import './app.css';
+
 function App() {
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(
+    !!localStorage.getItem("isAdmin")
+  );
+
   return (
     <BrowserRouter>
       <Routes>
 
-       
-
-        {/* Admin Layout */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/add" element={<AdminAdd />} />
+        {/* ================= Admin Routes ================= */}
+        <Route 
+          path="/admin/login" 
+          element={<AdminLogin setIsAdminLoggedIn={setIsAdminLoggedIn} />} 
+        />
+        <Route 
+          path="/admin" 
+          element={isAdminLoggedIn ? <AdminLayout /> : <Navigate to="/admin/login" />}
+        >
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="add" element={<AdminAdd />} />
         </Route>
+
+
+
+        {/* ================= User Routes ================= */}
+        <Route path="/" element={<Home />} />                 {/* home page */}
+        <Route path="/jobs" element={<Jobs />} />             {/* list of jobs */}
+        <Route path="/jobs/:id" element={<jobDetails />} />   {/* job details */}
+
+
+
+        
+
+        {/* Redirect unknown routes */}
+        <Route path="*" element={<Navigate to="/" />} />
 
       </Routes>
     </BrowserRouter>

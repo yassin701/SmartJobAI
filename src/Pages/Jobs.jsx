@@ -6,7 +6,6 @@ export default function Jobs() {
     
 
   return (
-    <>
-    </>
+    <div>joobs</div>
   )
 }

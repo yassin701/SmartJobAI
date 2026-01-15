@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import {
-  Briefcase,
   LayoutDashboard,
   PlusCircle,
   LogOut,
@@ -27,16 +26,7 @@ export default function AdminSideBar() {
           Dashboard
         </NavLink>
 
-        <NavLink
-          to="/admin/jobs"
-          className={({ isActive }) =>
-            `flex items-center gap-3 p-3 rounded-lg transition
-             ${isActive ? "bg-blue-600" : "hover:bg-gray-800"}`
-          }
-        >
-          <Briefcase size={20} />
-          Jobs
-        </NavLink>
+
 
         <NavLink
           to="/admin/add"
