@@ -3,6 +3,7 @@ import JobCard from "../../Components/JobCard";
 import { fetchJobs } from "../../Redux/jobSlice";
 import { useDispatch , useSelector } from "react-redux";
 import AdminEditJob from "../../Components/AdminEditJob";
+import AdminDeleteJob from "../../Components/AdminDeleteJob";
 
 
 export default function AdminDashboard() {
@@ -11,6 +12,10 @@ export default function AdminDashboard() {
 
   const [open , setOpen] = useState(false);
   const [selectedJob , setSelectedJob] = useState(null);
+
+  const [openDelete, setOpenDelete] = useState(false);
+  const [selectedJobId, setSelectedJobId] = useState(null);
+
 
   useEffect(() => {
       dispatch(fetchJobs());
@@ -34,12 +39,15 @@ export default function AdminDashboard() {
           <JobCard
           key={job.id}
           job={job}
-          isAdmin
+          isAdmin={true}
           onEdit ={()=> {
             setSelectedJob(job);
             setOpen(true)
-
           }}
+            onDelete={() => {
+              setSelectedJobId(job.id);
+              setOpenDelete(true)
+            }}
           />
         ))
       )}
@@ -51,6 +59,13 @@ export default function AdminDashboard() {
     onClose={()=> setOpen(false)}
     onUpdated={() => dispatch(fetchJobs())}
     />
+
+    {openDelete && (
+      <AdminDeleteJob
+      jobId={selectedJobId}
+      onDelete={() => dispatch(fetchJobs())}
+      onClose={() => setOpenDelete(false)}/>
+    )}
 
   </>
  );
