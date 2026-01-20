@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AdminLayout from './Components/AdminLayout';
+import UserLayout from "./Components/UseLayout";
 import AdminAdd from "./Pages/Admin/AdminAdd";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import AdminLogin from "./Pages/Admin/AdminLogin";
@@ -37,13 +38,12 @@ function App() {
 
 
         {/* ================= User Routes ================= */}
+        <Route element={<UserLayout/>}>
         <Route path="/" element={<Home />} />                 {/* home page */}
         <Route path="/jobs" element={<Jobs />} />             {/* list of jobs */}
         <Route path="/jobs/:id" element={<JobDetail />} />   {/* job details */}
-
-
-
-        
+        <Route path="/Apply" element={<Apply/>}/>
+        </Route>
 
         {/* Redirect unknown routes */}
         <Route path="*" element={<Navigate to="/" />} />

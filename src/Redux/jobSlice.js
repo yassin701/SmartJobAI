@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { getJobs } from "../services/axios"
+import { getJobs , getJobById } from "../services/axios"
+import { data } from "react-router-dom";
 
 
 
@@ -11,6 +12,7 @@ export const fetchJobs = createAsyncThunk(
         return data; // will be stored in redux state 
     }
 );
+
 
 const jobsSlice = createSlice({
     name: "jobs",
