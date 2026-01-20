@@ -39,7 +39,7 @@ function App() {
         {/* ================= User Routes ================= */}
         <Route path="/" element={<Home />} />                 {/* home page */}
         <Route path="/jobs" element={<Jobs />} />             {/* list of jobs */}
-        <Route path="/jobs/:id" element={<jobDetails />} />   {/* job details */}
+        <Route path="/jobs/:id" element={<JobDetail />} />   {/* job details */}
 
 
 

@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
-
+import { FaTrash , FaEdit , FaEye } from "react-icons/fa";
 export default function JobCard({ job, isAdmin, onDelete, onEdit }) {
+
   const skillsList = Array.isArray(job?.skills)
+
     ? job.skills
     : typeof job?.skills === 'string'
     ? job.skills.split(',').map((s) => s.trim()).filter(Boolean)
     : [];
+
+
+
 
   return (
     <div className="bg-white p-5 rounded-xl shadow-md border">
@@ -34,7 +39,7 @@ export default function JobCard({ job, isAdmin, onDelete, onEdit }) {
             to={`/jobs/${job.id}`}
             className="text-blue-600 font-medium"
           >
-            View details
+            <FaEye/>
           </Link>
         )}
 
@@ -43,17 +48,17 @@ export default function JobCard({ job, isAdmin, onDelete, onEdit }) {
             {/* EDIT BUTTON */}
             <button
               onClick={() => onEdit ? onEdit() : null}
-              className="px-3 py-1 bg-yellow-500 text-white rounded"
+              className="px-3  text-green-600"
             >
-              Edit
+              <FaEdit/>
             </button>
 
             {/* DELETE BUTTON */}
             <button
               onClick={() => onDelete(job.id)}
-              className="px-3 py-1 bg-red-600 text-white rounded"
+              className="px-3 py-1 text-red-600 rounded"
             >
-              Delete
+              <FaTrash/>
             </button>
           </div>
         )}

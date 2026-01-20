@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function AdminLogin() {
+export default function AdminLogin({setIsAdminLoggedIn}) {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -20,7 +20,8 @@ export default function AdminLogin() {
 
     if (formData.email === ADMIN_EMAIL && formData.password === ADMIN_PASSWORD) {
       // login success
-      localStorage.setItem("isAdmin", true); // store login status
+      localStorage.setItem("isAdmin", "true"); // store login status
+      setIsAdminLoggedIn(true)
       navigate("/admin/dashboard"); // navigate to dashboard
     } else {
       setError("Invalid email or password");
