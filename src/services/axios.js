@@ -1,35 +1,60 @@
-import axios from "axios"
+import axios from "axios";
 
-const BASE_URL = "https://6962e9172d146d9f58d251ee.mockapi.io/api/v1";
+const BASE_URL =  import.meta.env.VITE_API_BASE_URL;
 
-// Add Jobs (Admin => Post)
+/* =========================
+   JOBS API
+========================= */
+
+// Add Job (Admin)
 export const addJob = async (job) => {
-    const res = await axios.post(`${BASE_URL}/Jobs`, job);
-    return res.data
-}
+  const res = await axios.post(`${BASE_URL}/Jobs`, job);
+  return res.data;
+};
 
-//get 
+// Get all Jobs
 export const getJobs = async () => {
-    const res = await axios.get(`${BASE_URL}/Jobs`);
-    return res.data
+  const res = await axios.get(`${BASE_URL}/Jobs`);
+  return res.data;
+};
 
-}
-
-//get by id for details
+// Get Job by ID
 export const getJobById = async (id) => {
-    const res = await axios.get(`${BASE_URL}/Jobs/${id}`)
-    return res.data;
-}
+  const res = await axios.get(`${BASE_URL}/Jobs/${id}`);
+  return res.data;
+};
 
-//put 
-export const updateJob = async (id , job) => {
-    const res = await axios.put(`${BASE_URL}/Jobs/${id}`, job);
-    return res.data;
-}
+// Update Job
+export const updateJob = async (id, job) => {
+  const res = await axios.put(`${BASE_URL}/Jobs/${id}`, job);
+  return res.data;
+};
 
-
-//delete 
+// Delete Job
 export const deleteJob = async (id) => {
-    const res = await axios.delete(`${BASE_URL}/Jobs/${id}`);
-    return res.data;
-}
+  const res = await axios.delete(`${BASE_URL}/Jobs/${id}`);
+  return res.data;
+};
+
+/* =========================
+   CONDIDATURE API
+========================= */
+
+export const sendCondidature = async (data) => {
+  const res = await axios.post(`${BASE_URL}/condidature`, {
+    name: data.name,
+    email: data.email,
+    domain: data.domain,
+    skills: data.skills,
+    motivation: data.motivation,
+    cvUrl: data.cv, // ✅ URL ONLY
+  });
+
+  return res.data;
+};
+
+// Get all Condidatures
+export const getCondidatures = async () => {
+  const res = await axios.get(`${BASE_URL}/condidature`);
+  return res.data;
+};

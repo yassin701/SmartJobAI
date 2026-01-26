@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getJobById } from '../services/axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { MdArrowBack } from 'react-icons/md';
 
 export default function JobDetail() {
   const { id } = useParams();
@@ -27,16 +28,10 @@ export default function JobDetail() {
   return (
 
     <>
-
+    
+       
       <div className="max-w-4xl mx-auto my-10 p-8 bg-white shadow-lg rounded-xl border border-gray-200 relative">
-        {/* Back Button */}
-        <button
-          onClick={() => navigate("/jobs")}
-          className="absolute top-4 right-4 bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded transition"
-        >
-          ← Back
-        </button>
-
+        
         <div className="mb-6">
           <h1 className="text-3xl font-extrabold text-gray-800 mb-2">{job.title}</h1>
           <p className="text-gray-600 text-lg">{job.company} – {job.location}</p>

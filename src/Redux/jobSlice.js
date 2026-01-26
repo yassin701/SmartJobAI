@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { getJobs , getJobById } from "../services/axios"
-import { data } from "react-router-dom";
+import { getJobs  } from "../services/axios"
 
 
 
