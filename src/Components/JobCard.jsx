@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaTrash , FaEdit , FaEye } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 export default function JobCard({ job, isAdmin, onDelete, onEdit }) {
 
   const skillsList = Array.isArray(job?.skills)
@@ -9,7 +10,7 @@ export default function JobCard({ job, isAdmin, onDelete, onEdit }) {
     ? job.skills.split(',').map((s) => s.trim()).filter(Boolean)
     : [];
 
-
+ const navigate = useNavigate();
 
 
   return (
@@ -35,12 +36,12 @@ export default function JobCard({ job, isAdmin, onDelete, onEdit }) {
       {/* Actions */}
       <div className="flex justify-between items-center mt-4">
         {!isAdmin && (
-          <Link
-            to={`/jobs/${job.id}`}
-            className="text-blue-600 font-medium"
-          >
-            <FaEye/>
-          </Link>
+        <button className="flex items-center justify-between gap-2 text-xl text-blue-500"
+          onClick={() => navigate(`/jobs/${job.id}`)}
+        >
+         
+         View More <FaEye/>
+        </button>
         )}
 
         {isAdmin && (

@@ -3,6 +3,8 @@ import { FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { sendApplication, resetApplyState } from "../Redux/applySlice";
 import { uploadCV } from "../services/UploadCV";
+import GenerateMotivationButton from "../Components/GenerateMotivationButton";
+
 
 export default function ApplyForm() {
   const dispatch = useDispatch();
@@ -52,14 +54,15 @@ export default function ApplyForm() {
     e.preventDefault();
     if (!validateForm()) return;
 
-    let cvUrl = null; 
-   if(formData.cv){
-     cvUrl = await uploadCV(formData.cv); // upload first
-   }
-   
+    let cvUrl = null;
+    if (formData.cv) {
+      cvUrl = await uploadCV(formData.cv); // upload first
+    }
+
 
     dispatch(
-      sendApplication({...formData,
+      sendApplication({
+        ...formData,
         cv: cvUrl, //send url
 
       })
@@ -93,9 +96,9 @@ export default function ApplyForm() {
 
         {/* Name */}
         <div className="mb-4">
-          <input type="text" name="name" 
-          value={formData.name}
-           placeholder="Full Name"
+          <input type="text" name="name"
+            value={formData.name}
+            placeholder="Full Name"
             onChange={handleChange}
             className={`w-full px-3 py-2 border rounded-lg focus:outline-none ${errors.name ? "border-red-500" : "border-gray-300"}`} />
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
@@ -104,20 +107,20 @@ export default function ApplyForm() {
         {/* Email */}
         <div className="mb-4">
           <input type="email"
-           name="email" 
-           value={formData.email}
+            name="email"
+            value={formData.email}
             placeholder="Email"
-             onChange={handleChange}
+            onChange={handleChange}
             className={`w-full px-3 py-2 border rounded-lg focus:outline-none ${errors.email ? "border-red-500" : "border-gray-300"}`} />
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
 
         {/* Domain */}
         <div className="mb-4">
-          <select name="domain" 
-          value={formData.domain} 
-          onChange={handleChange} 
-          className="w-full mb-3 px-3 py-2 border rounded-lg">
+          <select name="domain"
+            value={formData.domain}
+            onChange={handleChange}
+            className="w-full mb-3 px-3 py-2 border rounded-lg">
             <option value="">Select your domain</option>
             {DOMAINS.map((d) => <option key={d} value={d}>{d}</option>)}
           </select>
@@ -126,32 +129,37 @@ export default function ApplyForm() {
 
         {/* Skills */}
         <div className="mb-4">
-          <input type="text" 
-          name="skills"
-          value={formData.skills} 
-          placeholder="Skills (React, JS...)"
-           onChange={handleChange}
+          <input type="text"
+            name="skills"
+            value={formData.skills}
+            placeholder="Skills (React, JS...)"
+            onChange={handleChange}
             className={`w-full px-3 py-2 border rounded-lg focus:outline-none ${errors.skills ? "border-red-500" : "border-gray-300"}`} />
           {errors.skills && <p className="text-red-500 text-sm mt-1">{errors.skills}</p>}
         </div>
 
         {/* Motivation */}
         <div className="mb-4">
-          <textarea name="motivation" 
-          rows="4"
-           placeholder="Motivation letter"
-           value={formData.motivation} 
-           onChange={handleChange}
+          <textarea name="motivation"
+            rows="4"
+            placeholder="Motivation letter"
+            value={formData.motivation}
+            onChange={handleChange}
             className={`w-full px-3 py-2 border rounded-lg focus:outline-none ${errors.motivation ? "border-red-500" : "border-gray-300"}`} />
           {errors.motivation && <p className="text-red-500 text-sm mt-1">{errors.motivation}</p>}
         </div>
 
-        {/* Generate AI */}
+        
+
         <div className="flex justify-end mb-4">
-          <button type="button" 
-          className="px-4 py-2 text-sm font-medium rounded-lg text-white bg-indigo-600
-           hover:bg-indigo-700 transition">Generate with AI</button>
+          <GenerateMotivationButton
+            formData={formData}
+            setFormData={setFormData}
+          />
         </div>
+
+
+
 
         {/* CV */}
         <div className="mb-6">
@@ -163,7 +171,7 @@ export default function ApplyForm() {
             </label>
 
             <button type="button" onClick={() => setFormData(prev => ({ ...prev, cv: null }))}
-             className="text-xs text-red-500 hover:underline" disabled={!formData.cv}>
+              className="text-xs text-red-500 hover:underline" disabled={!formData.cv}>
               <FaTrash className="text-xl cursor-pointer" />
             </button>
           </div>
