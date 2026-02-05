@@ -6,8 +6,9 @@ export const fetchJobs = createAsyncThunk(
     async () => {
         const data = await getJobs(); // axios get from axios.js
         return data; // will be stored in redux state 
-    }
+    }   
 );
+
 
 const jobsSlice = createSlice({
     name: "jobs",

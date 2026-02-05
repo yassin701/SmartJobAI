@@ -30,7 +30,7 @@ export default function Jobs() {
 
       ) : (
 
-        <p>No Jobs available</p>
+        <p className='flex justify-center items-center text-xl font-bold text-gray-500'>No Jobs available</p>
 
         )}
     </div>
