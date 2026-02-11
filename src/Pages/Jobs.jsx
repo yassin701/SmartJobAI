@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { fetchJobs } from '../Redux/jobSlice'
 import JobCard from '../Components/JobCard'
 import { useDispatch, useSelector } from 'react-redux'
-
+import Footer from '../Components/Footer';
 export default function Jobs() {
      const {list, status } = useSelector ((state) => state.jobs)
      const dispatch = useDispatch();
@@ -17,6 +17,7 @@ export default function Jobs() {
 
 
   return (
+    <>
     <div className='grid grid-cols-1  md:grid-cols-2  lg:grid-cols-4 gap-6 py-10 px-6'>
       {list && list.length > 0 ? (
         list.map((job) => (
@@ -34,6 +35,7 @@ export default function Jobs() {
 
         )}
     </div>
-
+  <Footer />
+</>
   );
 }

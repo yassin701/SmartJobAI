@@ -54,7 +54,7 @@ export default function Navbar() {
               <div className="h-8 w-8 bg-linear-to-br from-blue-600 to-blue-400 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                 <FaUser className="text-white text-sm" />
               </div>
-              <span className="text-gray-700 font-medium hidden md:block">Login</span>
+              <span className="text-gray-700 font-medium hidden md:block">Admin</span>
             </Link>
           </div>
 

@@ -8,6 +8,7 @@ import Home from './Pages/Home'
 import Apply from "./Pages/Apply"
 import Jobs from "./Pages/Jobs";
 import JobDetail from "./Pages/JobDetail";
+import AdminApplication from "./Pages/Admin/AdminApplication";
 
 
 import { useState } from "react";
@@ -33,6 +34,7 @@ function App() {
         >
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="add" element={<AdminAdd />} />
+          <Route path="applications" element={<AdminApplication />} />
         </Route>
 
 
@@ -49,6 +51,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
 
       </Routes>
+     
     </BrowserRouter>
   );
 }

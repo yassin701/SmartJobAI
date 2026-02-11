@@ -3,7 +3,7 @@ import { getJobById } from '../services/axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MdArrowBack, MdLocationOn, MdBusiness, MdCalendarToday } from 'react-icons/md';
 import { FaBriefcase, FaRegClock } from 'react-icons/fa';
-
+import Footer from '../Components/Footer';
 export default function JobDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -52,6 +52,7 @@ export default function JobDetail() {
       : [];
 
   return (
+    <>
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header with Back Button */}
@@ -217,5 +218,7 @@ export default function JobDetail() {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }

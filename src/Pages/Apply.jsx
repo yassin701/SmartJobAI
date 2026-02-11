@@ -8,6 +8,7 @@ import GenerateMotivationButton from "../Components/GenerateMotivationButton";
 import { useParams } from "react-router-dom";
 import Tips from "../Components/Tips";
 import { sendToN8n } from "../services/SendToN8n";
+import Footer from '../Components/Footer';
 
 export default function ApplyForm({ job }) {
   const { id } = useParams();
@@ -121,6 +122,7 @@ export default function ApplyForm({ job }) {
   }, [success, dispatch]);
 
 return (
+  <>
   <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50 py-12 px-4">
     <div className="max-w-4xl mx-auto">
       {/* Job Info Header */}
@@ -370,8 +372,11 @@ return (
 
         {/* Sidebar - Application Tips */}
         <Tips />
-      </div>
+      </div> 
     </div>
+   
   </div>
+ <Footer />
+</>
 );
 }

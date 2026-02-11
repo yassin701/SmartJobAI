@@ -40,7 +40,7 @@ export default function AdminSideBar() {
           }
         >
           <LayoutDashboard size={22} />
-          <span className="font-medium">Dashboard</span>
+          <span className="font-medium">Jobs</span>
         </NavLink>
 
         <NavLink
@@ -55,21 +55,6 @@ export default function AdminSideBar() {
         >
           <PlusCircle size={22} />
           <span className="font-medium">Add Job</span>
-        </NavLink>
-
-        {/* Additional menu items */}
-        <NavLink
-          to="/admin/jobs"
-          className={({ isActive }) =>
-            `flex items-center gap-4 p-4 rounded-xl transition-all group
-            ${isActive 
-              ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg" 
-              : "hover:bg-gray-800 text-gray-300 hover:text-white"
-            }`
-          }
-        >
-          <Briefcase size={22} />
-          <span className="font-medium">All Jobs</span>
         </NavLink>
 
         <NavLink
@@ -98,15 +83,7 @@ export default function AdminSideBar() {
         </button>
         
         {/* Admin Profile */}
-        <div className="mt-6 flex items-center gap-3">
-          <div className="h-12 w-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center">
-            <span className="font-bold text-lg">A</span>
-          </div>
-          <div>
-            <p className="font-medium">Administrator</p>
-            <p className="text-sm text-gray-400">Super Admin</p>
-          </div>
-        </div>
+       
       </div>
     </aside>
   );
