@@ -73,7 +73,7 @@ const AdminApplications = () => {
     <div className="p-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
           <div>
             <h1 className="text-2xl font-bold text-gray-800">Candidatures</h1>
             <p className="text-gray-600 mt-1">Gestion des candidatures reçues</p>
@@ -99,7 +99,7 @@ const AdminApplications = () => {
         ) : (
           <>
             {/* Table */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden overflow-x-auto">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
@@ -198,8 +198,8 @@ const AdminApplications = () => {
                       onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
                       className={`p-2 rounded-lg border transition-colors duration-150 ${currentPage === 1
-                          ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
-                          : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400'
+                        ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                        : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400'
                         }`}
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -213,8 +213,8 @@ const AdminApplications = () => {
                         key={pageNum}
                         onClick={() => handlePageChange(pageNum)}
                         className={`w-10 h-10 rounded-lg border text-sm font-medium transition-colors duration-150 ${pageNum === currentPage
-                            ? 'border-blue-500 bg-blue-500 text-white'
-                            : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400'
+                          ? 'border-blue-500 bg-blue-500 text-white'
+                          : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400'
                           }`}
                       >
                         {pageNum}
@@ -239,8 +239,8 @@ const AdminApplications = () => {
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
                       className={`p-2 rounded-lg border transition-colors duration-150 ${currentPage === totalPages
-                          ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
-                          : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400'
+                        ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
+                        : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400'
                         }`}
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

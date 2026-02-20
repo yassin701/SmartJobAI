@@ -1,26 +1,12 @@
 @import "tailwindcss";
 
-@theme {
-    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+button:not([disabled]),
+select,
+label[for],
+a {
+    cursor: pointer;
 }
 
-@layer base {
-    body {
-        @apply bg-white;
-    }
-}
-
-@keyframes slide-left {
-    from {
-        transform: translateX(100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
-
-.animate-slide-left {
-    animation: slide-left 0.3s ease-out forwards;
+button[disabled] {
+    cursor: not-allowed;
 }

@@ -80,7 +80,7 @@ export default function AdminAdd() {
                     <div className="border-b border-gray-200 px-6 py-4">
                         <h2 className="text-lg font-medium text-gray-900">Job information</h2>
                     </div>
-                    
+
                     <form onSubmit={handleSubmit} className="p-6 space-y-6">
                         {success && (
                             <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm">
@@ -89,7 +89,7 @@ export default function AdminAdd() {
                         )}
 
                         {/* Two columns layout for first row */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Job title <span className="text-red-500">*</span>
@@ -122,7 +122,7 @@ export default function AdminAdd() {
                         </div>
 
                         {/* Location and Contract */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Location <span className="text-red-500">*</span>
@@ -152,7 +152,7 @@ export default function AdminAdd() {
                                     <option value="CDI">CDI - Permanent</option>
                                     <option value="CDD">CDD - Fixed term</option>
                                     <option value="Stage">Internship</option>
-                                    <option value="Alternance">Apprenticeship</option>
+                                    
                                 </select>
                                 {errors.contract && <p className="text-red-500 text-xs mt-1">{errors.contract}</p>}
                             </div>
