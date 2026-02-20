@@ -2,19 +2,27 @@ import axios from "axios";
 
 export const generateMotivationLetter = async ({ name, domain, skills }) => {
 const prompt = `
-Write a short motivation letter (only 6 lines).
-Use only these data: name, domain, skills.
-Do NOT add any placeholders like [Company Name].
+Write a professional and concise motivation letter in exactly 6 lines.
 
-Dear Hiring Manager,
+Rules:
+- Use ONLY the following data: name, domain, skills.
+- Do NOT invent company names.
+- Do NOT add placeholders like [Company Name].
+- Keep the tone confident and professional.
+- Do NOT repeat information unnecessarily.
 
-My name is ${name}. I am a student in ${domain} and I am motivated to join your team.
-My skills include: ${skills}.
-I am eager to learn and grow in a professional environment.
-Thank you for your time and consideration.
+Structure:
+Line 1: Dear Hiring Manager,
+Line 2: Introduce the candidate using name and domain.
+Line 3: Mention motivation and interest in the field.
+Line 4: Present skills naturally in one sentence.
+Line 5: Express eagerness to contribute and grow.
+Line 6: Closing with Sincerely + name.
 
-Sincerely,
-${name}
+Data:
+Name: ${name}
+Domain: ${domain}
+Skills: ${skills}
 `;
 
 
