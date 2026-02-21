@@ -12,7 +12,7 @@ import AdminApplication from "./Pages/Admin/AdminApplication";
 
 
 import { useState } from "react";
-import './app.css';
+import './App.css';
 
 function App() {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(
