@@ -70,10 +70,10 @@ const AdminApplications = () => {
   }
 
   return (
-    <div className="p-6 min-h-screen">
+    <div className="p-4 sm:p-5 min-h-screen">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
           <div>
             <h1 className="text-2xl font-bold text-gray-800">Candidatures</h1>
             <p className="text-gray-600 mt-1">Gestion des candidatures reçues</p>
@@ -104,22 +104,22 @@ const AdminApplications = () => {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                         Nom
                       </th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                         Email
                       </th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                         Domaine
                       </th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                         Compétences
                       </th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                         Motivation
                       </th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                      <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                         CV
                       </th>
                     </tr>
@@ -135,10 +135,10 @@ const AdminApplications = () => {
                         className={`hover:bg-gray-50 transition-colors duration-150 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
                           }`}
                       >
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-4 py-2 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">{app.name}</div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-4 py-2 whitespace-nowrap">
                           <div className="text-sm text-gray-600">{app.email}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -146,12 +146,12 @@ const AdminApplications = () => {
                             {app.domain}
                           </span>
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-4 py-2">
                           <div className="text-sm text-gray-900 max-w-xs truncate">
                             {typeof app.skills === 'string' ? app.skills : "-"}
                           </div>
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-4 py-2">
                           <div className="text-sm text-gray-900 max-w-xs line-clamp-2">
                             {app.motivation || app["lettre motivation"] || "-"}
                           </div>
@@ -182,7 +182,7 @@ const AdminApplications = () => {
               </div>
 
               {/* Pagination */}
-              <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+              <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                   {/* Informations de pagination */}
                   <div className="text-sm text-gray-600">
