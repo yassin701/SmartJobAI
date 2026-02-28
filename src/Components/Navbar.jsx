@@ -36,6 +36,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
+            aria-label="Open Menu"
             className="md:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors"
             onClick={() => setIsOpen(true)}
           >
@@ -77,6 +78,7 @@ export default function Navbar() {
                 <span className="text-xl font-bold text-gray-900">SmartJob</span>
               </Link>
               <button
+                aria-label="Close Menu"
                 onClick={() => setIsOpen(false)}
                 className="p-2 text-gray-500 hover:text-red-500 transition-colors"
               >
