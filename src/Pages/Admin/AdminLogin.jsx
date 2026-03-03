@@ -142,14 +142,7 @@ export default function AdminLogin({ setIsAdminLoggedIn }) {
                 )}
               </button>
 
-              {/* Demo Credentials */}
-              <div className="bg-blue-50 border border-blue-100 rounded-xl p-4">
-                <h4 className="font-medium text-blue-800 mb-2">💡 Demo Credentials</h4>
-                <div className="text-sm text-blue-700 space-y-1">
-                  <p><span className="font-medium">Email:</span> admin@smartjob.com</p>
-                  <p><span className="font-medium">Password:</span> admin123</p>
-                </div>
-              </div>
+              
             </form>
           </div>
 
@@ -161,24 +154,6 @@ export default function AdminLogin({ setIsAdminLoggedIn }) {
           </div>
         </div>
 
-        {/* Security Note */}
-        <div className="mt-6 text-center">
-          <div className="inline-flex items-center gap-2 text-gray-500 text-sm">
-            <FaShieldAlt className="text-green-500" />
-            <span>Secure login with SSL encryption</span>
-          </div>
-        </div>
-
-        {/* Back Button inside card (alternative placement) */}
-        <div className="mt-6 text-center">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-gray-600 hover:text-blue-600 font-medium transition-colors"
-          >
-            <FaArrowLeft />
-            Return to Homepage
-          </Link>
-        </div>
       </div>
     </div>
   );
