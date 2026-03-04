@@ -18,7 +18,7 @@ export default function JobFilter({ onFilterChange }) {
   };
 
   return (
-    <div className="bg-white p-4 rounded-2xl shadow-md border border-gray-100 mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+    <div className="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-md border border-gray-100 dark:border-slate-700 mb-8 flex flex-col md:flex-row gap-4 items-center justify-between transition-colors duration-300">
       <div className="relative w-full md:w-2/3">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <FaSearch className="text-gray-400" />
@@ -28,7 +28,7 @@ export default function JobFilter({ onFilterChange }) {
           placeholder="Search by job title, company, or skills..."
           value={searchTerm}
           onChange={handleSearchChange}
-          className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-slate-600 rounded-xl leading-5 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
         />
       </div>
 
@@ -39,7 +39,7 @@ export default function JobFilter({ onFilterChange }) {
         <select
           value={contractType}
           onChange={handleContractChange}
-          className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 text-gray-700 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none shadow-sm"
+          className="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-slate-600 rounded-xl leading-5 bg-gray-50 dark:bg-slate-700 text-gray-700 dark:text-gray-200 focus:outline-none focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none shadow-sm"
         >
           <option value="">All Categories (Contract)</option>
           <option value="CDI">CDI</option>

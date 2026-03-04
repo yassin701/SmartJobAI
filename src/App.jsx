@@ -3,7 +3,7 @@ import AdminLayout from './Components/AdminLayout';
 import UserLayout from "./Components/UseLayout";
 import AdminAdd from "./Pages/Admin/AdminAdd";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
-import AdminLogin from "./Pages/Admin/AdminLogin";
+import Auth from "./Pages/Auth";
 import Home from './Pages/Home'
 import Apply from "./Pages/Apply"
 import Jobs from "./Pages/Jobs";
@@ -11,26 +11,28 @@ import JobDetail from "./Pages/JobDetail";
 import AdminApplication from "./Pages/Admin/AdminApplication";
 
 
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import './App.css';
 
 function App() {
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(
-    !!localStorage.getItem("isAdmin")
-  );
+  const { role } = useSelector((state) => state.auth);
 
   return (
     <BrowserRouter>
       <Routes>
 
         {/* ================= Admin Routes ================= */}
-        <Route 
-          path="/admin/login" 
-          element={<AdminLogin setIsAdminLoggedIn={setIsAdminLoggedIn} />} 
+        <Route
+          path="/auth"
+          element={!role ? <Auth /> : <Navigate to={role === "admin" ? "/admin/dashboard" : "/"} />}
         />
-        <Route 
-          path="/admin" 
-          element={isAdminLoggedIn ? <AdminLayout /> : <Navigate to="/admin/login" />}
+        <Route
+          path="/admin/login"
+          element={<Navigate to="/auth" />}
+        />
+        <Route
+          path="/admin"
+          element={role === "admin" ? <AdminLayout /> : <Navigate to="/auth" />}
         >
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="add" element={<AdminAdd />} />
@@ -40,18 +42,18 @@ function App() {
 
 
         {/* ================= User Routes ================= */}
-        <Route element={<UserLayout/>}>
-        <Route path="/" element={<Home />} />                 {/* home page */}
-        <Route path="/jobs" element={<Jobs />} />             {/* list of jobs */}
-        <Route path="/jobs/:id" element={<JobDetail />} />   {/* job details */}
-        <Route path="/Apply" element={<Apply/>}/>
+        <Route element={<UserLayout />}>
+          <Route path="/" element={<Home />} />                 {/* home page */}
+          <Route path="/jobs" element={<Jobs />} />             {/* list of jobs */}
+          <Route path="/jobs/:id" element={<JobDetail />} />   {/* job details */}
+          <Route path="/Apply" element={role ? <Apply /> : <Navigate to="/auth" />} />
         </Route>
 
         {/* Redirect unknown routes */}
         <Route path="*" element={<Navigate to="/" />} />
 
       </Routes>
-     
+
     </BrowserRouter>
   );
 }

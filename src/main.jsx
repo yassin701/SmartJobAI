@@ -8,5 +8,5 @@ import { store } from './Redux/store.js'
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />
- </Provider>
+  </Provider>
 );
